@@ -1,0 +1,67 @@
+## Liberty dev experience demo notes
+
+########################
+Setup: 
+########################
+
+Use the Liberty Getting Started Labd and Demo PoT Techzone environment
+		novnc password: IBMDem0s
+
+
+WhereAmI app that we implement https in server.xml and color changes based on http or https scheme used.  
+And make Header in Servlet output in UpperCase. The WhereAmI.java has the example code in there commented o
+
+
+
+1. git clone the repo that contains the lab and demo artifacts
+
+2. make directory /home/techzone/Student/dev
+3. change to directory /home/techzone/Student/dev
+
+
+4. Start with the OpenLiberty starter: https://openliberty.io/start/
+Use Lars lab guide to get started and create the Student/dev directory where we will create the Maven project. 
+
+Create a Maven project, then add the WhereAmI code and server.xml by unzipping the "whereami-with-tests.zip" into 
+Use Java 17, Jakarta 10, and name “whereami” in the Starter.io
+
+	
+5. unzip "whereami-with-tests.zip" into the /home/techzone/Student/dev
+6. change to directory /home/techzone/Student/dev/whereami
+7. Launch vscode   using "code ." command from the "whereami" directory
+8. Run thrugh demo 1 time before doing live with client. 
+9. Cleanup the updates in the app and server.xml
+10. stop Liberty server from vs code
+
+########################
+Demo: 
+########################
+
+
+1. start Libety in VS Code
+2. Browser: show whereami app runinng on port 9080  https://localhost:9080/whereami
+3. Edit server.xml 
+	add HTTPS port 9443 
+	add feature "transportSecurity-1.0
+	View the ssl config at the bottom of the server.xml file (points to the security token already created prior to demo)
+	
+4. 	Browser: show whereami running on HTTPS port 9443 https://localhost:9443/whereami
+5. Edit whereami.java
+	Add code to check for coloer in the 'zone' variable
+6. Browser: Test HTTP and HTTPS URLs to whereami	
+		HTTPS is in GREEN 
+		HTTP is in RED
+		
+7. Run the integration tests, which look for the header in the whereami app in UpperCase	
+			Fails since the header in not in uppoercase
+			See messages in test output
+8. Add code in whereami to make the Header in UpperCase
+9. Browser: see whereami header in uppoer case    http://localhost:9080/whereami
+10. Rerun the integration tests	
+	tests pass as the headr is now in UpperCase	
+	See messages in test output
+
+		
+	
+	
+	
